@@ -1,0 +1,110 @@
+在GIT里上传网页
+1  在GITHUB官网上的“+”处，创建了一个新仓库
+2  在电脑里新建一个文件夹并通过GIT INIT让GIT托管
+3  用GIT REMOTE ADD ORIGIN 地址（在官网创建新仓库时会提供 ）
+4  GIT ADD .
+5  GIT COMMIT -M'XXXXXXXXXX'
+6  如果仓库里有东西就GIT PULL ORIGIN MASTER，如果没有东西就GIT PUSH ORIGIN MASTER
+7  检查新仓库里是否上传成功
+
+作为组员通过GIT上传作业的过程
+1 组长先提供一个邀请函，我们CLONE这个邀请函，在电脑里会生成一个文件夹
+2 在文件夹里建立“XXXX”文件夹，在“XXXX”文件夹里存要上传的东西
+2.5  然后执行git pull 更新其他组员的文件，以防文件流失
+3 GIT ADD .
+4 GIT COMMIT -M'XXXXXXX'
+4.5 然后执行git pull 更新其他组员的文件，以防文件流失
+5 git push origin master  更新组长库里的数据
+
+作为组长通过GIT上传作业给老师的过程
+
+组长需要
+git pull       下载更（组长先下载其他组员的文件，更新本地数据）组员已经上传好了，组长再下载到本地上
+git  add .      保存到暂存区  把我个人的东西放到二区
+git commit -m      保存到历史区  把我个人的东西放到三区
+git remote add  **(链接名,自己随便写的)  家地址https://github.com/zhufengzhufeng/201615node.git       关联老师的git  库地址
+ git status                     查看状态
+ git pull   **(链接名，自己随便写的要和之前随便写的一样) master            更新老师的文件，下载其他组的东西，也是出于保险覆盖别的组的
+ 如本机有修改
+（ git  add .
+git commit -m
+git pull   出于保险起见
+git push origin master   本组及他组一起上传
+）
+如本机没有修改
+git push origin master
+
+
+=====================================================================================================================
+## 单线程和多线程
+-NODE主线程是单线程的，进程中包含线程，正常JAVA一个进程中包含多个线程，NODE中一个进程只能包含一个线程，允许开子进程。
+## 同步和异步
+-代码从上到下执行，先走同步再走异步，异步不会阻塞主线程。
+##阻塞和非阻塞
+-针对内核来说的，非阻塞是异步的前置条件
+##回调
+-用回调来解决异步编程问题
+##异步的文件读写，CALLBACK，定时器，能用异步不用同步
+## NODE  全局对象
+-在任意地点可以直接访问的
+-在GLOBAL上挂载的都是全局对象
+
+=======================================================================================================================
+## js中模块
+-（SEAJS CMD,REQUIREJS AMD，NODE COMMONJS）
+- CMD 就近依赖,AMD 依赖前置
+-单例 （不能保证完全解决冲突，调用时调用名字过长）
+-闭包，NODE中实现模块化采用的是读写
+## COMMONJS（提高了可维护性，有利于分工协作，高内聚低耦合）
+-如何定义模块
+创建一个JS文件，每个文件就是一个模块，多个模块可以组成一个包
+-如何导出一个模块
+EXPORTS    MODULE.EXPORTS
+-如何使用一个模块
+REQUIRE
+
+文件模块是自己写的模块，引用文件模块要使用相对路径
+核心模块也是内置模块，NODE自带的本来就有的天生的
+第三方模块，需要安装下载
+A 可以使用某个模块中的变量挂载在全局下，让所有模块来使用
+
+## npm node-package-manager
+###全局下载（在命令行下使用）  -g
+###本地安装 （在我们代码里使用的）
+###安装nrm源切换工具   npm i nrm -g
+###http-server
+npm install http-server -g
+http-server -p 3000   更改一个端口
+###本地安装 （在我们代码里使用）
+#### 初始化依赖文件（package.json）
+####1 开发依赖 gulp
+npm install gulp (--save-dev)或者（-D）
+在指定目录下生成
+npm init -y
+#### 2 项目依赖jquery
+npm info jquery
+npm install jquery （--save）或者 (-S)
+####3,发布自己的包          www.npmjs.org
+-package.json
+-name不能和已发布的包重名
+-main里对应的主文件写一个
+-发布要切换到npm
+-添加用户，有的话可以登录
+-卸载包
+## bower（管理前端文件的，指定目录下载，只管理前端 文件 在GIT中下载） npm{管理NODE模块的,安装的文件放到Node_modules下，不能指定安装目录 }
+npm install bower -g
+###下载文件  bower.json记录依赖
+bower init
+下载文件
+bower install bootstrap --save
+默认安装 到BOWER_COMPONENT下，
+卸载：bower uninstall bootstrap --save
+发布HEXO
+npm install hexo-cli -g
+###生成BLOG
+hexo init
+
+
+
+
+
